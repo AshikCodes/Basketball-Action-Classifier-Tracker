@@ -68,11 +68,10 @@ model = Sequential([
                kernel_regularizer=regularizers.l2(0.01),  # Adding L2 regularization
                input_shape=(40, 64, 64, 3), return_sequences=True),
     BatchNormalization(),
-    MaxPooling3D(pool_size=(1, 2, 2)),  # reduce spatial dimensions
+    MaxPooling3D(pool_size=(1, 2, 2)),  
     Flatten(),
     Dense(128, activation='relu', kernel_regularizer=regularizers.l1(0.01)),  # Adding L1 regularization
-    # Adding Dropout for regularization
-    tf.keras.layers.Dropout(0.5),  # Adjust dropout rate as needed
+    tf.keras.layers.Dropout(0.5),  
     Dense(len(np.unique(labels)), activation='softmax')
 ])
 
